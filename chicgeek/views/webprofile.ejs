@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <% include partials/template/head.ejs %>
+    <script>
+      var myApp=angular.module('myApp', ['angular.filter','ui.bootstrap']);
+      myApp.controller('profileCtrl', function($scope, $http) {
+        $http.get('getProfile').success(function(data) {
+          $scope.ghprofile=data;
+            
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <% include partials/template/header.ejs %>
+    <div ng-controller="profileCtrl">
+      {{ghprofile}}
+    </div>
+  </body>
+</html>
